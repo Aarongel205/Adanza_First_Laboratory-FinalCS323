@@ -1,4 +1,4 @@
-# Distributed Voting System — CS323 Laboratory 2
+# Distributed Voting System — CS323 Laboratory 1
 Aaron P. Adanza May 9, 2026 CS3C
 
 ## Reflection Questions
