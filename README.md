@@ -1,4 +1,4 @@
-# Distributed Voting System — CS323 Laboratory 1
+# Distributed Order Processing Challenge — CS323 Laboratory 1 Final Term
 Aaron P. Adanza May 9, 2026 CS3C
 
 ## Reflection Questions
