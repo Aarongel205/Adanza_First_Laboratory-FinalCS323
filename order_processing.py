@@ -52,7 +52,11 @@ if rank == 0:
         print(f"  [ORDER] {o['order_id']} -> {o['item']}", flush=True)
     print(f"{'='*60}\n", flush=True)
 
+    #distribute orders
     for idx, order in enumerate(orders):
         dest = (idx % num_workers) + 1
         comm.send(order, dest=dest, tag=1)
         print(f"  [DISPATCH] {order['order_id']} -> Worker-{dest}", flush=True)
+
+    for w in range(1, size):
+        comm.send(None, dest=w, tag=1)
