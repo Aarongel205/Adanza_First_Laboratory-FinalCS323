@@ -62,3 +62,17 @@ if rank == 0:
         comm.send(None, dest=w, tag=1)
     
     print(f"\n  All orders dispatched. Waiting for workers to finish...\n", flush=True)
+
+    shared_orders = []
+    lock = threading.Lock()
+
+    #create result from workers
+    for _ in range(num_orders):
+        result = comm.recv(source=MPI.ANY_SOURCE, tag=2)
+        with lock:
+            shared_orders.append(result)
+        print(
+            f"  [RECEIVED] {result['order_id']} from {result['processed_by']} "
+            f"in {result['processing_time']}s",
+            flush=True,
+        )
