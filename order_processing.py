@@ -32,3 +32,18 @@ def process_order(order, worker_rank):
         "processed_by": f"Worker-{worker_rank}",
         "processing_time": delay,
     }
+
+#Master
+if rank == 0:
+    num_workers = size - 1
+    if num_workers < 1:
+        print("ERROR: Need at least 2 MPI processes (1 master + 1 worker).", flush=True)
+        comm.Abort(1)
+ 
+    num_orders = random.randint(5, 8)
+    orders = generate_orders(num_orders)
+ 
+    print(f"\n{'='*60}", flush=True)
+    print(f"  MASTER (rank 0) — generated {num_orders} orders", flush=True)
+    print(f"  Workers available: {num_workers}", flush=True)
+    print(f"{'='*60}", flush=True)
