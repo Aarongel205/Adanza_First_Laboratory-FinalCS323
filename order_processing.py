@@ -47,3 +47,7 @@ if rank == 0:
     print(f"  MASTER (rank 0) — generated {num_orders} orders", flush=True)
     print(f"  Workers available: {num_workers}", flush=True)
     print(f"{'='*60}", flush=True)
+
+    for o in orders:
+        print(f"  [ORDER] {o['order_id']} -> {o['item']}", flush=True)
+    print(f"{'='*60}\n", flush=True)
