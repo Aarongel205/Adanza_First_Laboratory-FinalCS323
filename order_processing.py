@@ -76,3 +76,23 @@ if rank == 0:
             f"in {result['processing_time']}s",
             flush=True,
         )
+    
+    print(f"\n{'='*60}", flush=True)
+    print(f"  MASTER — Final Order Report ({len(shared_orders)} orders)", flush=True)
+    print(f"{'='*60}", flush=True)
+    for r in sorted(shared_orders, key=lambda x: x["order_id"]):
+        print(
+            f"  {r['order_id']} | {r['item']:<22} | "
+            f"{r['status']} | {r['processed_by']} | "
+            f"{r['processing_time']}s",
+            flush=True,
+        )
+    print(f"{'='*60}\n", flush=True)
+ 
+    if len(shared_orders) == num_orders:
+        print("  [OK] All orders accounted for — output is consistent.\n", flush=True)
+    else:
+        print(
+            f"  [WARN] Expected {num_orders} orders but got {len(shared_orders)}.\n",
+            flush=True,
+        )
