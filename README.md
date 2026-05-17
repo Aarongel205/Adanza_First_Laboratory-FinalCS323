@@ -49,4 +49,15 @@ worker has finished, the final output is always complete and consistent.
 #### 6. How did you ensure consistent results when using multiple processes?
 The with lock: statement makes sure that only one worker can add data to the shared list at a time. If another worker tries to access the lock while it is already being used, it must wait until the lock is released. This prevents multiple workers from writing to the list at the same time, avoiding race conditions and data errors. The program also uses comm.Barrier() so the master process waits until all workers are finished before reading the shared list. Because of the lock and barrier together, the final output is complete, accurate, and consistent.
 
+## Documentary
+
+#### Image 1
+![image 1](/assets/image1.png)
+
+#### Image 2
+![image 2](/assets/image2.png)
+
+#### Image 3
+![image 3](/assets/image3.png)
+
 
