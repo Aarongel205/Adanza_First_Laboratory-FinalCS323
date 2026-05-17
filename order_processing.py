@@ -22,3 +22,5 @@ def generate_orders(n):
     ]
 
 def process_order(order, worker_rank):
+    delay = round(random.uniform(0.3, 1.2), 2)
+    time.sleep(delay)
