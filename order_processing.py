@@ -60,3 +60,5 @@ if rank == 0:
 
     for w in range(1, size):
         comm.send(None, dest=w, tag=1)
+    
+    print(f"\n  All orders dispatched. Waiting for workers to finish...\n", flush=True)
