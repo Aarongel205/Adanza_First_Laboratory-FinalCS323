@@ -120,4 +120,4 @@ else:
         # Send result back to master
         comm.send(result, dest=0, tag=2)
 
-         print(f"  [Worker-{rank}] All tasks complete.", flush=True)
+        print(f"  [Worker-{rank}] All tasks complete.", flush=True)
