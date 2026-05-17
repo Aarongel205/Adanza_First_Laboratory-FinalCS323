@@ -16,5 +16,9 @@ ITEMS = [
 ]
 
 def generate_orders(n):
+    return [
+        {"order_id": f"ORD-{100 + i}", "item": random.choice(ITEMS)}
+        for i in range(n)
+    ]
 
 def process_order(order, worker_rank):
