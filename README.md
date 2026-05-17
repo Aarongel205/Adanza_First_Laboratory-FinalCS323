@@ -13,3 +13,7 @@ worker so each one knows when to stop listening for new tasks.
 #### 2. What happens if there are more orders than workers?
 Because the assignment uses a pull-style loop, each worker keeps receiving tasks until it gets the sentinel value. This helps distribute the orders naturally even if there are more orders than workers. In a round-robin setup, some workers may receive more tasks than others. For example, if there are 7 orders and 3 workers, two workers will process 3 orders while one worker will process 2. No orders are missed because the master only sends the sentinel after all orders have already been assigned.
 
+#### 3. How did processing delays affect the order completion?
+Each worker uses time.sleep(random.uniform(0.3, 1.2)) before saving its result. Since the workers run at the same time, some workers finish faster than others depending on the random delay. Workers with shorter delays can write to the shared memory first, while workers with longer delays finish later. Because of this, the completed orders in shared_orders are not stored in the same order they were assigned. To make the final output easier to read, the master process sorts the completed orders by order_id before printing the report.
+
+
