@@ -76,7 +76,7 @@ if rank == 0:
             f"in {result['processing_time']}s",
             flush=True,
         )
-    
+    #print final report
     print(f"\n{'='*60}", flush=True)
     print(f"  MASTER — Final Order Report ({len(shared_orders)} orders)", flush=True)
     print(f"{'='*60}", flush=True)
@@ -96,3 +96,5 @@ if rank == 0:
             f"  [WARN] Expected {num_orders} orders but got {len(shared_orders)}.\n",
             flush=True,
         )
+else:
+    print(f"  [Worker-{rank}] Ready and waiting for orders.", flush=True)
