@@ -98,3 +98,24 @@ if rank == 0:
         )
 else:
     print(f"  [Worker-{rank}] Ready and waiting for orders.", flush=True)
+
+    while True:
+        order = comm.recv(source=0, tag=1)
+ 
+        if order is None:   # STOP sentinel
+            break
+ 
+        print(
+            f"  [Worker-{rank}] Received {order['order_id']} ({order['item']}). Processing...",
+            flush=True,
+        )
+ 
+        result = process_order(order, rank)
+ 
+        print(
+            f"  [Worker-{rank}] Done with {result['order_id']} in {result['processing_time']}s",
+            flush=True,
+        )
+ 
+        # Send result back to master
+        comm.send(result, dest=0, tag=2)
