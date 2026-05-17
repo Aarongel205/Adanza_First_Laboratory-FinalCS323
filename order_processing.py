@@ -14,3 +14,7 @@ ITEMS = [
     "Laptop", "Keyboard", "Mouse", "Monitor", "Headphones",
     "USB Hub", "Webcam", "Desk Lamp", "Mechanical Keyboard", "Mousepad"
 ]
+
+def generate_orders(n):
+
+def process_order(order, worker_rank):
