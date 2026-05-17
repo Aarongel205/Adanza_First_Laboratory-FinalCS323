@@ -1,3 +1,6 @@
+# Distributed Voting System — CS323 Laboratory 2
+Aaron P. Adanza May 9, 2026 CS3C
+
 ## Reflection Questions
 
 #### 1. How did you distribute orders among worker processes?
